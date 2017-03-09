@@ -1,4 +1,4 @@
-$OutputFile = C:\temp\ping4.txt;
+$OutputFile = "C:\temp\ping4.txt";
 for ($i=0;$i -lt 255; $i++){
 "Portnumber: " + $i + ": send ping....";
 $OnePing = ping -n 1 192.168.2.$i;
