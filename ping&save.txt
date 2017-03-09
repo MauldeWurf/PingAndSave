@@ -1,0 +1,1 @@
+for ($i=0;$i -lt 255; $i++){$ping = ping -n 1 192.168.2.$i; $ping | Out-File -append C:\temp\ping.txt}
