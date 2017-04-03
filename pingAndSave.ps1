@@ -3,7 +3,7 @@
 
 $OutputFile = "C:\temp\PingIPRange.log"; #File to save the responding IPs
 $IPAdressRoot = "192.168.2." #part of network that should be scanned i.e. "192.168.2." for "192.168.2.xxx"
-$PingTimeout = 300
+$PingTimeout = 10
 $PingNumber = 1
 $ListOfIP = New-Object System.Collections.ArrayList
 $Date = Get-Date
