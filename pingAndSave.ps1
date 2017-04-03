@@ -1,4 +1,4 @@
-#This tiny powershell script is scanning an IP range from 0 to 254 to find other devices in the local network
+#This tiny powershell script is scanning an IPv4 range from 0 to 255 to find other devices in the local network
 #The IPs that give an answer are saved in the $OutputFile which can be specified below.
 
 $OutputFile = "C:\temp\PingIPRange.log"; #File to save the responding IPs
@@ -18,6 +18,7 @@ $logstring | Out-File -append $OutputFile;
 
 Function AskResponse
 {
+#use the .Net.Webclient to ask for the frontpage of the device in the network. A shorter timeout would improve the speed of this process without loosing accuracy.
 Param ([string]$IPtoContact)
 $responseString =""
 $IPtoContact = "http://" + $IptoContact
@@ -35,6 +36,9 @@ return $responseString
 
 Function Recognize
 {
+#using particular words to recognize the different devices that are actually present in this house. This function has to be adapted to new devices,
+#by looking at the $responseString to find characteristic phrases. Devices that immideatly ask for an authorization can not be distinguished.
+#However, this works fine here.
 Param ([string]$ResponseString)
  if($ResponseString.Contains("Speedport W 723V")){ return "Router"}
  if($ResponseString.Contains("Canon")){ return "Printer"}
